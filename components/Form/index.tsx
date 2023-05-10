@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 
 import { schema } from "./schema";
 
@@ -12,15 +12,45 @@ const defaultInputStyle = "w-full h-14 bg-transparent text-zinc-600 border borde
 const defaultLabelStyle = "absolute top-[14px] left-2 text-zinc-400 duration-300 transform -translate-y-4 scale-[.65] z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-[.65] peer-focus:-translate-y-4 cursor-pointer";
 
 const Form = () => {
+    const [sendingSuccess, setSendingSuccess] = useState('');
     const [hidePassword, setHidePassword] = useState(true);
     const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
-    const { register, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
-        resolver: yupResolver(schema)
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<FormDataProps>({
+        resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data: FormDataProps) => {
-        console.log(data);
+    const onSubmit = async (data: FormDataProps) => {
+        data.date = new Date(data.date).toISOString();
+
+        try {
+            await fetch("http://localhost:3333/user", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            reset({
+                firstName: "",
+                lastName: "",
+                email: "",
+                tel: "",
+                password: "",
+                confirmPassword: "",
+                date: "",
+                city: "",
+                cep: "",
+                country: "",
+                state: "",
+            });
+
+            setSendingSuccess("Dados enviados com sucesso.");
+        } catch (err) {
+            console.log(err);
+            setSendingSuccess("Ocorreu algum erro,");
+        }
     };
 
     return (
@@ -34,7 +64,7 @@ const Form = () => {
             </p>
 
             <div className=" flex flex-col gap-5 text-xl mt-8">
-                <h2 className='text-gray-500 font-medium'>
+                <h2 className="text-gray-500 font-medium">
                     Nome
                 </h2>
 
@@ -42,13 +72,13 @@ const Form = () => {
                     <div className="relative flex flex-col gap-1 w-full">
                         <input
                             type="text"
-                            id="fullName"
+                            id="firstName"
                             placeholder="Dário"
                             {...register("firstName")}
                             className={defaultInputStyle}
                         />
 
-                        <label htmlFor="fullName" className={defaultLabelStyle}>
+                        <label htmlFor="firstName" className={defaultLabelStyle}>
                             Primeiro nome
                         </label>
 
@@ -78,7 +108,7 @@ const Form = () => {
             </div>
 
             <div className="text-xl mt-8">
-                <h2 className='text-gray-500 font-medium'>
+                <h2 className="text-gray-500 font-medium">
                     Email
                 </h2>
 
@@ -95,7 +125,7 @@ const Form = () => {
             </div>
 
             <div className="text-xl mt-8">
-                <h2 className='text-gray-500 font-medium'>
+                <h2 className="text-gray-500 font-medium">
                     Telefone
                 </h2>
 
@@ -112,7 +142,7 @@ const Form = () => {
             </div>
 
             <div className="flex flex-col gap-5 text-xl mt-8">
-                <h2 className='text-gray-500 font-medium'>
+                <h2 className="text-gray-500 font-medium">
                     Senha
                 </h2>
 
@@ -184,7 +214,7 @@ const Form = () => {
             </div>
 
             <div className="text-xl mt-8">
-                <h2 className='text-gray-500 font-medium'>
+                <h2 className="text-gray-500 font-medium">
                     Data de nascimento
                 </h2>
 
@@ -200,7 +230,7 @@ const Form = () => {
             </div>
 
             <div className=" flex flex-col gap-5 text-xl mt-8">
-                <h2 className='text-gray-500 font-medium'>
+                <h2 className="text-gray-500 font-medium">
                     Cidade
                 </h2>
 
@@ -243,8 +273,8 @@ const Form = () => {
                 </div>
             </div>
 
-            <div className=" flex flex-col gap-5 text-xl mt-8">
-                <h2 className='text-gray-500 font-medium'>
+            <div className=" flex flex-col gap-5 text-xl mt-8 mb-16">
+                <h2 className="text-gray-500 font-medium">
                     País
                 </h2>
 
@@ -287,7 +317,11 @@ const Form = () => {
                 </div>
             </div>
 
-            <button type="submit" className="w-full h-12 bg-blue-500 text-white text-xl rounded-xl mt-16">
+            <span className="text-red-500 text-sm">
+                {sendingSuccess}
+            </span>
+
+            <button type="submit" className="w-full h-12 bg-blue-500 text-white text-xl rounded-xl mt-2">
                 Enviar
             </button>
         </form>
