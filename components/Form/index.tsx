@@ -54,7 +54,7 @@ const Form = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[800px] bg-white my-16 p-12 rounded-xl">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[800px] bg-white my-16 mx-auto p-12 rounded-xl">
             <h1 className="text-3xl font-bold">
                 Registrar novo usuário
             </h1>
