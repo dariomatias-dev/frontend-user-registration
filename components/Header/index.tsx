@@ -8,10 +8,12 @@ const Header = () => {
                 <Link href="/">
                     <Image
                         src="/icons/user_registration_icon.svg"
-                        width={50}
+                        width={70}
                         height={50}
+                        style={{
+                            height: "auto",
+                        }}
                         alt="Icon"
-                        className="w-[70px]"
                     />
                 </Link>
 

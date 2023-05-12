@@ -1,7 +1,9 @@
+import Form from "@/components/Form";
+
 const Cadastro = () => {
     return (
         <>
-
+            <Form />
         </>
     );
 };

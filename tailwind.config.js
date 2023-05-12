@@ -12,6 +12,7 @@ module.exports = {
         "objective_background": "url('/images/objective_background.jpg')",
       },
       screens: {
+        "table": "848px",
         "mini-lg": "900px",
       }
     },

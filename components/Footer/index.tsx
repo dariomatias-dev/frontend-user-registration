@@ -63,7 +63,7 @@ const Footer = () => {
                             <a
                                 href="https://portfolio-dariomatias-dev.vercel.app/"
                                 target="_blank"
-                                className="flex justify-center items-center w-44 h-10 bg-zinc-900 hover:bg-zinc-800 mx-auto rounded-full transition duration-500"
+                                className="flex justify-center items-center w-44 h-10 bg-zinc-900 hover:bg-zinc-800 rounded-full transition duration-500"
                             >
                                 Click para acessar
                             </a>

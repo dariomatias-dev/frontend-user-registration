@@ -9,7 +9,7 @@ import { schema } from "./schema";
 type FormDataProps = yup.InferType<typeof schema>;
 
 const defaultInputStyle = "w-full h-14 bg-transparent text-zinc-600 border border-blue-900 px-2 pt-2 rounded-lg placeholder-transparent outline-none peer focus:placeholder:text-zinc-400";
-const defaultLabelStyle = "absolute top-[14px] left-2 text-zinc-400 duration-300 transform -translate-y-4 scale-[.65] z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-[.65] peer-focus:-translate-y-4 cursor-pointer";
+const defaultLabelStyle = "absolute top-[14px] left-2 text-zinc-400 transform -translate-y-4 scale-[.65] origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-[.65] peer-focus:-translate-y-4 cursor-pointer duration-300";
 
 const Form = () => {
     const [sendingSuccess, setSendingSuccess] = useState('');
@@ -54,7 +54,7 @@ const Form = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[800px] bg-white my-16 mx-auto p-12 rounded-xl">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[800px] bg-white mt-36 mb-16 mx-auto p-12 rounded-xl">
             <h1 className="text-3xl font-bold">
                 Registrar novo usuário
             </h1>
@@ -321,7 +321,10 @@ const Form = () => {
                 {sendingSuccess}
             </span>
 
-            <button type="submit" className="w-full h-12 bg-blue-500 text-white text-xl rounded-xl mt-2">
+            <button
+                type="submit"
+                className="w-full h-12 bg-blue-500 text-white text-xl rounded-md mt-2"
+            >
                 Enviar
             </button>
         </form>
