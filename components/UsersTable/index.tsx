@@ -1,4 +1,5 @@
 import BasicUserDataProps from "@/@types/BasicUserData";
+import formatDate from "@/utils/formatDate";
 import { useRouter } from "next/router";
 
 type Props = {
@@ -7,17 +8,6 @@ type Props = {
 
 const UsersTable = ({ users }: Props) => {
     const router = useRouter();
-
-    const formattedDate = (value: Date) => {
-        const date = new Date(value);
-        const day = date.getDay();
-        const month = date.getMonth();
-        const year = date.getFullYear();
-        const formattedDay = day >= 10 ? day : `0${day}`;
-        const formattedMonth = month >= 10 ? month : `0${month}`;
-
-        return `${formattedDay}/${formattedMonth}/${year}`;
-    };
 
     const serUserData = (id: string) => {
         router.push(`/usuario/?userId=${id}`);
@@ -46,20 +36,20 @@ const UsersTable = ({ users }: Props) => {
             </thead>
             <tbody>
                 {
-                    users.map(user => {
-                        const date = formattedDate(user.date);
+                    users.map(({id, firstName, lastName, email, date}) => {
+                        const formattedDate = formatDate(date);
 
                         return (
                             <tr
-                                key={user.id}
-                                onClick={() => serUserData(user.id)}
+                                key={id}
+                                onClick={() => serUserData(id)}
                                 className="hover:bg-gray-100 cursor-pointer transition duration-300"
                             >
-                                <td className="h-7 text-xs px-3 border border-gray-600">{user.id}</td>
-                                <td className="h-7 text-xs px-3 border border-gray-600">{user.firstName}</td>
-                                <td className="h-7 text-xs px-3 border border-gray-600">{user.lastName}</td>
-                                <td className="h-7 text-xs px-3 border border-gray-600">{user.email}</td>
-                                <td className="h-7 text-xs px-3 border border-gray-600">{date}</td>
+                                <td className="h-7 text-xs px-3 border border-gray-600">{id}</td>
+                                <td className="h-7 text-xs px-3 border border-gray-600">{firstName}</td>
+                                <td className="h-7 text-xs px-3 border border-gray-600">{lastName}</td>
+                                <td className="h-7 text-xs px-3 border border-gray-600">{email}</td>
+                                <td className="h-7 text-xs px-3 border border-gray-600">{formattedDate}</td>
                             </tr>
                         )
                     })

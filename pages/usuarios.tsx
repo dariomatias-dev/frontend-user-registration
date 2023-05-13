@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
+import Loading from "@/components/Loading";
 import UsersTable from "@/components/UsersTable";
 
 import BasicUserDataProps from "@/@types/BasicUserData";
@@ -20,7 +21,7 @@ const Usuarios = () => {
     const fetchUsers = async (skip: number) => {
         try {
             const response = await fetch(`http://localhost:3333/users/?skip=${skip}`);
-            const data: RegistrationDataProps = await response.json();
+            const data = await response.json();
             setRegistrationData({ ...data });
         } catch (err) {
             console.log(err);
@@ -42,7 +43,8 @@ const Usuarios = () => {
         fetchAmountUsers();
     }, []);
 
-    if (JSON.stringify(registrationData) === "{}") return <></>;
+    if (JSON.stringify(registrationData) === '{"users":[],"skip":0}')
+        return <Loading />;
 
     return (
         <div className="mx-10">

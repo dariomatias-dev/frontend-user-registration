@@ -5,13 +5,13 @@ type FullUserDataProps = {
     email: string;
     tel: string;
     password: string;
-    date: Date
+    date: string;
     city: string;
     cep: string;
     country: string;
     state: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 };
 
 export default FullUserDataProps;

@@ -54,12 +54,12 @@ const Form = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[800px] bg-white mt-36 mb-16 mx-auto p-12 rounded-xl">
-            <h1 className="text-3xl font-bold">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[800px] bg-white mt-36 mb-16 mx-auto p-12 border-2 border-gray-00 rounded-xl">
+            <h1 className="bg-white text-3xl font-bold">
                 Registrar novo usuário
             </h1>
 
-            <p className="text-2xl font-medium mt-2">
+            <p className="text-xl font-medium mt-2">
                 Preencha todos os campos corretamente para fazer o cadastro do novo usuário.
             </p>
 
