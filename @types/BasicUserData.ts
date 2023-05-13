@@ -3,7 +3,7 @@ type BasicUserDataProps = {
     firstName: string;
     lastName: string;
     email: string;
-    date: Date;
+    date: string;
 };
 
 export default BasicUserDataProps;

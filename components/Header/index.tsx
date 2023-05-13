@@ -1,14 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { FiMoreVertical } from 'react-icons/fi';
 
 const Header = () => {
     const [showPopup, setShowPopup] = useState(false);
-
-    useEffect(() => {
-        console.log(showPopup)
-    }, [showPopup])
 
     return (
         <header className="fixed top-0 left-0 h-20 w-full bg-black z-10">

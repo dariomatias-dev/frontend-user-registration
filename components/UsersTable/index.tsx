@@ -1,6 +1,7 @@
 import BasicUserDataProps from "@/@types/BasicUserData";
-import formatDate from "@/utils/formatDate";
 import { useRouter } from "next/router";
+
+import formatDate from "@/utils/formatDate";
 
 type Props = {
     users: BasicUserDataProps[];
@@ -37,7 +38,7 @@ const UsersTable = ({ users }: Props) => {
             <tbody>
                 {
                     users.map(({id, firstName, lastName, email, date}) => {
-                        const formattedDate = formatDate(date);
+                        const formattedDate = formatDate(date, true);
 
                         return (
                             <tr

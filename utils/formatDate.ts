@@ -1,12 +1,14 @@
-const formatDate = (value: Date) => {
-    const date = new Date(value);
-    const day = date.getDay();
-    const month = date.getMonth();
-    const year = date.getFullYear();
+const formatDate = (value: string, dateToShow: boolean) => {
+    const day = Number(value.slice(8, 10));
+    const month = Number(value.slice(5, 7));
+    const year = Number(value.slice(0, 4));
     const formattedDay = day >= 10 ? day : `0${day}`;
     const formattedMonth = month >= 10 ? month : `0${month}`;
 
-    return `${formattedDay}/${formattedMonth}/${year}`;
+    return dateToShow ?
+        `${formattedDay}/${formattedMonth}/${year}`
+        :
+        `${year}-${formattedMonth}-${formattedDay}`;
 };
 
 export default formatDate;

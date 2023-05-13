@@ -3,29 +3,31 @@ import { useRouter } from "next/router";
 
 import Loading from "@/components/Loading";
 
-import formatDate from "@/utils/formatDate";
-
 import FullUserDataProps from "@/@types/FullUserData";
+
+import fetchUser from "@/utils/fetchUser";
 
 const Usuario = () => {
     const [user, setUser] = useState({} as FullUserDataProps);
-    const { query } = useRouter();
+    const { query, push } = useRouter();
 
-    const fetchUser = async (userId: string) => {
-        try {
-            const response = await fetch(`http://localhost:3333/user/${userId}`);
-            const data = await response.json();
-            data.date = formatDate(data.date);
-            data.createdAt = formatDate(data.createdAt);
-            setUser(data);
-        } catch (err) {
-            console.log(err);
-        }
+    const fetchUserData = async (userId: string) => {
+        const data = await fetchUser(userId, true);
+        setUser(data);
+    };
+
+    const editUser = () => {
+        push(`/editar-usuario/?id=${user.id}`);
+    };
+
+    const deleteUser = async () => {
+        await fetch(`http://localhost:3333/user/${user.id}`, { method: 'DELETE' });
+        push("/usuarios");
     };
 
     useEffect(() => {
         const userId = query.userId as string;
-        fetchUser(userId);
+        fetchUserData(userId);
     }, []);
 
     if (JSON.stringify(user) === "{}")
@@ -72,8 +74,29 @@ const Usuario = () => {
                         <span className="font-bold">País:</span> {user.country}.
                     </p>
                     <p>
-                        <span className="font-bold">Conta criada em:</span> {user.createdAt}.
+                        <span className="font-bold">Usuário criado em:</span> {user.createdAt}.
                     </p>
+                    <p>
+                        <span className="font-bold">Usuário atualizado em:</span> {user.updatedAt === user.createdAt ? "Ainda não foi atualizado": user.updatedAt}.
+                    </p>
+                </div>
+
+                <div className="flex justify-between mt-8">
+                    <button
+                        type="button"
+                        onClick={editUser}
+                        className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white font-bold py-3 px-8 rounded-md transition duration-300"
+                    >
+                        Editar
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={deleteUser}
+                        className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white font-bold py-3 px-8 rounded-md transition duration-300"
+                    >
+                        Excluir
+                    </button>
                 </div>
             </div>
         </div>
