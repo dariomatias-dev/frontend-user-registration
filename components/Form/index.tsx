@@ -88,8 +88,8 @@ const Form = ({ user }: Props) => {
     }, []);
 
     return (
-        <div className="w-full h-full bg-[#F0F0F0] py-1 px-10">
-            <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[800px] bg-white mt-36 mb-16 mx-auto p-12 border-2 border-gray-00 rounded-xl">
+        <div className="w-full h-full bg-[#F0F0F0] py-1 px-4 sm:px-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[800px] bg-white mt-36 mb-16 mx-auto p-6 sm:p-12 border-2 border-gray-00 rounded-xl">
                 <h1 className="bg-white text-3xl font-bold">
                     Registrar novo usuário
                 </h1>
@@ -103,7 +103,7 @@ const Form = ({ user }: Props) => {
                         Nome
                     </h2>
 
-                    <div className="flex justify-between gap-8">
+                    <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-8">
                         <div className="relative flex flex-col gap-1 w-full">
                             <input
                                 type="text"
@@ -142,7 +142,7 @@ const Form = ({ user }: Props) => {
                     </div>
                 </div>
 
-                <div className="text-xl mt-8">
+                <div className="text-xl mt-6 sm:mt-8">
                     <h2 className="text-gray-500 font-medium">
                         Email
                     </h2>
@@ -159,7 +159,7 @@ const Form = ({ user }: Props) => {
                     </span>
                 </div>
 
-                <div className="text-xl mt-8">
+                <div className="text-xl mt-6 sm:mt-8">
                     <h2 className="text-gray-500 font-medium">
                         Telefone
                     </h2>
@@ -176,12 +176,12 @@ const Form = ({ user }: Props) => {
                     </span>
                 </div>
 
-                <div className="flex flex-col gap-5 text-xl mt-8">
+                <div className="flex flex-col gap-5 text-xl mt-6 sm:mt-8">
                     <h2 className="text-gray-500 font-medium">
                         Senha
                     </h2>
 
-                    <div className="flex justify-between gap-8">
+                    <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-8">
                         <div className="relative flex flex-col gap-3 w-full">
                             <input
                                 type={hidePassword ? "password" : "text"}
@@ -248,7 +248,7 @@ const Form = ({ user }: Props) => {
                     </div>
                 </div>
 
-                <div className="text-xl mt-8">
+                <div className="text-xl mt-6 sm:mt-8">
                     <h2 className="text-gray-500 font-medium">
                         Data de nascimento
                     </h2>
@@ -264,12 +264,12 @@ const Form = ({ user }: Props) => {
                     </span>
                 </div>
 
-                <div className=" flex flex-col gap-5 text-xl mt-8">
+                <div className=" flex flex-col gap-5 text-xl mt-6 sm:mt-8">
                     <h2 className="text-gray-500 font-medium">
                         Cidade
                     </h2>
 
-                    <div className="flex justify-between gap-8">
+                    <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-8">
                         <div className="relative flex flex-col gap-1 w-full">
                             <input
                                 type="text"
@@ -308,12 +308,12 @@ const Form = ({ user }: Props) => {
                     </div>
                 </div>
 
-                <div className=" flex flex-col gap-5 text-xl mt-8 mb-16">
+                <div className=" flex flex-col gap-5 text-xl mt-6 sm:mt-8 mb-8 sm:mb-16">
                     <h2 className="text-gray-500 font-medium">
                         País
                     </h2>
 
-                    <div className="flex justify-between gap-8">
+                    <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-8">
                         <div className="relative flex flex-col gap-1 w-full">
                             <input
                                 type="text"

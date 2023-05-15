@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import { useRouter } from "next/router";
 
 import Loading from "@/components/Loading";
@@ -9,6 +9,7 @@ import fetchUser from "@/utils/fetchUser";
 
 const Usuario = () => {
     const [user, setUser] = useState({} as FullUserDataProps);
+    const [popupConfirm, setPopupConfirm] = useState(false);
     const { query, push } = useRouter();
 
     const fetchUserData = async (userId: string) => {
@@ -24,6 +25,20 @@ const Usuario = () => {
         await fetch(`http://localhost:3333/user/${user.id}`, { method: 'DELETE' });
         push("/usuarios");
     };
+
+    const closePopup = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+        const tagClassName = (e.target as Element).classList[0];
+
+        if (tagClassName === "popup-wrapper")
+            setPopupConfirm(false);
+    };
+
+    useEffect(() => {
+        if (popupConfirm)
+            document.body.style.overflowY = "hidden";
+        else
+            document.body.style.overflowY = "auto";
+    }, [popupConfirm]);
 
     useEffect(() => {
         const userId = query.userId as string;
@@ -77,7 +92,7 @@ const Usuario = () => {
                         <span className="font-bold">Usuário criado em:</span> {user.createdAt}.
                     </p>
                     <p>
-                        <span className="font-bold">Usuário atualizado em:</span> {user.updatedAt === user.createdAt ? "Ainda não foi atualizado": user.updatedAt}.
+                        <span className="font-bold">Usuário atualizado em:</span> {user.updatedAt === user.createdAt ? "Ainda não foi atualizado" : user.updatedAt}.
                     </p>
                 </div>
 
@@ -92,13 +107,36 @@ const Usuario = () => {
 
                     <button
                         type="button"
-                        onClick={deleteUser}
+                        onClick={() => setPopupConfirm(true)}
                         className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white font-bold py-3 px-8 rounded-md transition duration-300"
                     >
                         Excluir
                     </button>
                 </div>
             </div>
+
+            {
+                popupConfirm && (
+                    <div
+                        onClick={closePopup}
+                        className="popup-wrapper fixed top-0 left-0 flex justify-center items-center w-screen h-screen bg-black bg-opacity-50 backdrop-blur-sm z-20"
+                    >
+                        <div className="w-full max-w-[400px] bg-black text-center text-white p-4 rounded-md">
+                            <h1 className="text-4xl font-bold mb-2">
+                                Excluir usuário
+                            </h1>
+                            <p>
+                                Atenção, usuários excluídos não podem ser recuperados. Prossiga apenas se tiver certeza.
+                            </p>
+                            <button
+                                onClick={deleteUser}
+                                className="popup-button flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold mt-8 mx-auto py-3 px-8 rounded-md transition duration-300">
+                                Excluir
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
         </div>
     );
 };

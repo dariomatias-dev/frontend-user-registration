@@ -61,7 +61,7 @@ const Usuarios = () => {
                     type="button"
                     disabled={registrationData.skip === 5}
                     onClick={() => fetchUsers(registrationData.skip - 10)}
-                    className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white py-3 px-8 rounded-md disabled:bg-zinc-700 disabled:text-zinc-300 disabled:cursor-not-allowed transition duration-300"
+                    className="flex items-center gap-1 sm:gap-2 bg-zinc-900 hover:bg-zinc-800 text-white py-3 px-6 sm:px-8 rounded-md disabled:bg-zinc-700 disabled:text-zinc-300 disabled:cursor-not-allowed transition duration-300"
                 >
                     <FiArrowLeft />
                     Voltar
@@ -71,7 +71,7 @@ const Usuarios = () => {
                     type="button"
                     disabled={amountUsers === registrationData.skip}
                     onClick={() => fetchUsers(registrationData.skip)}
-                    className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white py-3 px-8 rounded-md disabled:bg-zinc-700 disabled:text-zinc-300 disabled:cursor-not-allowed transition duration-300"
+                    className="flex items-center gap-1 sm:gap-2 bg-zinc-900 hover:bg-zinc-800 text-white py-3 px-6 sm:px-8 rounded-md disabled:bg-zinc-700 disabled:text-zinc-300 disabled:cursor-not-allowed transition duration-300"
                 >
                     Próximo
                     <FiArrowRight />
