@@ -1,4 +1,4 @@
-# Cadastro de usuários
+# Cadastro de usuários - Frontend
 
 <div style="display: inline_block">
   <img src="https://img.shields.io/badge/license-mit-green" />
@@ -22,8 +22,8 @@
   <li>
     Botão para editar usuários, redirecionando para uma página dedicada a esse propósito, com todos os campos preenchidos com as atuais informações do usuário;
   </li>
-    Botão para excluir usuário, que abre uma pop-up de confirmação caso tenha sido pressionado acidentalmente, evitando uma exclusão não intencional.
   <li>
+    Botão para excluir usuário, que abre uma pop-up de confirmação caso tenha sido pressionado acidentalmente, evitando uma exclusão não intencional.
   </li>
 </ul>
 
