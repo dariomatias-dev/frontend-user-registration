@@ -13,7 +13,7 @@ const UsersTable = ({ users }: Props) => {
     const serUserData = (id: string) => {
         router.push(`/usuario/?userId=${id}`);
     };
-
+    
     return (
         <table className="w-full min-w-[768px] border-collapse text-center">
             <thead className="w-full bg-black text-white">

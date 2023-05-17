@@ -1,38 +1,98 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cadastro de usuários
 
-## Getting Started
+<div style="display: inline_block">
+  <img src="https://img.shields.io/badge/license-mit-green" />
+  <img src="https://img.shields.io/badge/status%20-active-blue" />
+</div>
 
-First, run the development server:
+## Projeto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### O que irá encontrar:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<ul>
+  <li>
+    Página inicial com o motivo da criação do projeto.
+  </li>
+  <li>
+    Página com formulário para cadastrar um novo usuário;
+  </li>
+  <li>
+    Última página responsável por mostrar em uma tabela os usuários cadastrados, com paginação e mostrando 10 usuários por vez;
+  </li>
+  <li>
+    Botão para editar usuários, redirecionando para uma página dedicada a esse propósito, com todos os campos preenchidos com as atuais informações do usuário;
+  </li>
+    Botão para excluir usuário, que abre uma pop-up de confirmação caso tenha sido pressionado acidentalmente, evitando uma exclusão não intencional.
+  <li>
+  </li>
+</ul>
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Como usar
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Caso queira baixar, testar ou alterar o projeto, siga os seguintes passos:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### Clonar
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Primeiro clone o repositório com: git clone [link HTTPS ou SSH do repositório]
 
-## Learn More
+Pode conseguir esse link acessando o repositório que quer clonar, e apertando em um botão verde com o nome "<> CODE".
 
-To learn more about Next.js, take a look at the following resources:
+#### Baixar dependências
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Depois baixe todas as dependências necessárias: npm i
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Rodar
 
-## Deploy on Vercel
+Rode o projeto com: npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Screenshots
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h3>Desktop</h3>
+<img style="width: 50%" src="./public/screenshots/desktop.png" alt="Screenshot desktopo"/>
+<h3>Mobile</h3>
+<img style="width: 50%;" src="./public/screenshots/mobile.png" width="100px;" alt="Screenshot mobile"/>
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção desse projeto:
+
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [Next.js](https://nextjs.org/)
+-   [TailwindCSS](https://tailwindcss.com/)
+-   [REACT HOOK FORM](https://react-hook-form.com/)
+-   [YUP](https://github.com/jquense/yup)
+
+<br/>
+
+## Autor
+
+<img style="border-radius: 50%" src="./public/images/my-photo.png" width="100px" alt="My photo"/>
+
+<sub>
+  <b>Dário Matias</b>
+</sub>
+
+<br/>
+  Entre em contato!
+<br/>
+<br/>
+
+<a href="https://www.linkedin.com/in/d%C3%A1rio-matias-dales-gamma-587785243/" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+</a>
+
+<a href="https://www.instagram.com/dario_delta10/?theme=dark" target="_blank">
+  <img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
+</a>
+
+<a href="https://wa.me/5583986404371">
+  <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+</a>
+
+<a href="https://twitter.com/matiasdario752" target="_blank">
+  <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
+</a>
+
+<a href="https://portfolio-dariomatias-dev.vercel.app/" target="_blank">
+  <img src="https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white" />
+</a>
