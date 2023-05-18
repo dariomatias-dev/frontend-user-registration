@@ -7,6 +7,11 @@
 
 ## Projeto
 
+### Propósito
+
+O motivo de sua criação é ser o primeiro projeto Full Stack, colocando os conhecimentos de cada área em prática.
+Sendo o Frontend, utiliza a API RESTful criada para guardar e lidar com os usuários cadastrados. Todas as rotas criadas na API são usadas.
+
 ### O que irá encontrar:
 
 <ul>
@@ -48,9 +53,9 @@ Rode o projeto com: npm run dev
 ## Screenshots
 
 <h3>Desktop</h3>
-<img style="width: 50%" src="./public/screenshots/desktop.png" alt="Screenshot desktopo"/>
+<img style="width: 50%" src="./public/screenshots/desktop.png" alt="Screenshot desktop."/>
 <h3>Mobile</h3>
-<img style="width: 50%;" src="./public/screenshots/mobile.png" width="100px;" alt="Screenshot mobile"/>
+<img style="width: 50%;" src="./public/screenshots/mobile.png" alt="Screenshot mobile."/>
 
 ## 🛠 Tecnologias
 
@@ -66,7 +71,7 @@ As seguintes ferramentas foram usadas na construção desse projeto:
 
 ## Autor
 
-<img style="border-radius: 50%" src="./public/images/my-photo.png" width="100px" alt="My photo"/>
+<img style="border-radius: 50%" src="./public/images/my-photo.png" width="100px" alt="My photo."/>
 
 <sub>
   <b>Dário Matias</b>
