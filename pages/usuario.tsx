@@ -12,20 +12,24 @@ const Usuario = () => {
     const [popupConfirm, setPopupConfirm] = useState(false);
     const { query, push } = useRouter();
 
+    // Manda uma solicitação para o banco de dados requisitando todos os dados do usuário que corresponde ao id passado na url, e guarda esses dados.
     const fetchUserData = async (userId: string) => {
         const data = await fetchUser(userId, true);
         setUser(data);
     };
 
+    // Redireciona para a página de edição dos dados do usuário.
     const editUser = () => {
         push(`/editar-usuario/?id=${user.id}`);
     };
 
+    // Envia para o banco de dados o id do usuário que deve ser excluído e redireciona para a página de usuários.
     const deleteUser = async () => {
         await fetch(`http://localhost:3333/user/${user.id}`, { method: 'DELETE' });
         push("/usuarios");
     };
 
+    // Quando chamado verifica se é um chamado válido para fechar a pop-up de confirmação de exclusão de usuário.
     const closePopup = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
         const tagClassName = (e.target as Element).classList[0];
 
@@ -33,6 +37,7 @@ const Usuario = () => {
             setPopupConfirm(false);
     };
 
+    // Esconde ou mostra a barra de rolagem de acordo com o estado (mostrando ou escondida) da pop-up.
     useEffect(() => {
         if (popupConfirm)
             document.body.style.overflowY = "hidden";
@@ -40,11 +45,13 @@ const Usuario = () => {
             document.body.style.overflowY = "auto";
     }, [popupConfirm]);
 
+    // Resgata o id do usuário da URL quando a página é aberta e manda para uma função que irá buscar o usuário com base no id.
     useEffect(() => {
         const userId = query.userId as string;
         fetchUserData(userId);
     }, []);
 
+    // Mostra um componente de carregamento caso os dados do usuário ainda não estejam disponíveis.
     if (JSON.stringify(user) === "{}")
         return <Loading />;
 

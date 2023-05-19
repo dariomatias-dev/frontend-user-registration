@@ -1,5 +1,6 @@
 import * as yup from "yup";
 
+// Válidação e definição das mensagens de erro dos campos do formulário.
 const schema = yup.object({
     firstName: yup
         .string()

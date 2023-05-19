@@ -8,12 +8,13 @@ type Props = {
 };
 
 const UsersTable = ({ users }: Props) => {
-    const router = useRouter();
+    const { push } = useRouter();
 
+    // Quando chamado redireciona para a página de usuario e coloca como parâmetro o id do usuário passado.
     const serUserData = (id: string) => {
-        router.push(`/usuario/?userId=${id}`);
+        push(`/usuario/?userId=${id}`);
     };
-    
+
     return (
         <table className="w-full min-w-[768px] border-collapse text-center">
             <thead className="w-full bg-black text-white">

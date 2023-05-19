@@ -18,6 +18,7 @@ const Usuarios = () => {
     });
     const [amountUsers, setAmountUsers] = useState(0);
 
+    // Manda uma solicitação para o banco de dados requisitando os usuários cadastrados com base no skip, que diz quantos deve pular.
     const fetchUsers = async (skip: number) => {
         try {
             const response = await fetch(`http://localhost:3333/users/?skip=${skip}`);
@@ -28,6 +29,7 @@ const Usuarios = () => {
         }
     };
 
+    // Manda uma solicitação para o banco de dados requisitando o número de registros.
     const fetchAmountUsers = async () => {
         try {
             const response = await fetch("http://localhost:3333/users/count");
@@ -38,6 +40,7 @@ const Usuarios = () => {
         }
     };
 
+    // Chama a função de buscar usuários e a quantidade de registros quando a página é aberta.
     useEffect(() => {
         fetchUsers(0);
         fetchAmountUsers();

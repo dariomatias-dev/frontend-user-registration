@@ -28,10 +28,12 @@ const Form = ({ user }: Props) => {
         resolver: yupResolver(schema),
     });
 
+    // Quando chamado envia os dados passados para o banco de dados.
     const onSubmit = async (data: FormDataProps) => {
         data.date = new Date(data.date).toISOString();
 
         try {
+            // Caso o "user" guarde dados, significa que o formulário foi chamado para editar os dados do usuário que estão no "user", caso contrário, se trata da criação de um novo usuário.
             if (user)
                 await fetch(`http://localhost:3333/user/${user.id}`, {
                     method: "PATCH",
@@ -48,6 +50,7 @@ const Form = ({ user }: Props) => {
                     },
                     body: JSON.stringify(data),
                 });
+            // Reseta todos os campos do formulário após o envio dos dados.
             reset({
                 firstName: "",
                 lastName: "",
@@ -70,6 +73,7 @@ const Form = ({ user }: Props) => {
     };
 
     useEffect(() => {
+        // Caso o "user" não seja vazio, preenche todos os campos do formulário com os dados que esta guardando.
         if (user) {
             reset({
                 firstName: user.firstName,
